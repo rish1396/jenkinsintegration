@@ -1,0 +1,25 @@
+Resources:
+  LambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: LambdaRole
+      AssumeRolePolicyDocument:
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+  
+        
+        
+  HelloWorld:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: test1
+      Role: !GetAtt LambdaRole.Arn
+      Runtime: nodejs14.x
+      Handler: index.handler
+      Code:
+        S3Bucket: 1nodelambda
+        S3Key: test.zip
+      
