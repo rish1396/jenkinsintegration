@@ -3,8 +3,10 @@ pipeline {
     stages {
         stage('Submit Stack') {
             steps {
-            sh "aws cloudformation create-stack --stack-name test --template-body file://cft.yml --capabilities CAPABILITY_NAMED_IAM --region 'us-east-1'"
-              }
+                withAWS(credentials: 'aws', region: 'us-east-1') {
+                    sh "aws cloudformation create-stack --stack-name test --template-body file://cft.yml --capabilities CAPABILITY_NAMED_IAM --region 'us-east-1'"
+                }    
              }
-            }
-            }
+         }
+     }
+}
