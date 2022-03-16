@@ -8,7 +8,7 @@ exports.handler = async (event) => {
   ) + min;
   const now = moment().format();
   
-  const message = 'Your dice throw resulted in ' + 
+  const message = 'The dice throw resulted in ' + 
     randomNumber + ' and was issued at ' + now;
   
   return message;
