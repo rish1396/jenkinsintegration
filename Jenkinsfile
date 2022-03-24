@@ -9,7 +9,7 @@ pipeline {
         stage('Zip'){
             steps{
                 sh "npm install"
-                sh "zip -r test.zip test"
+                sh "zip -r test.zip ."
             }  
         }
         stage('Submit Stack') {
